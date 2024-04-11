@@ -1,0 +1,131 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}المقالات |{% endblock %}
+
+{% block bodyweb %}   
+
+<!--Home slider-->
+<div class="mt-bnr-inr overlay-wraper bg-parallax bg-top-center"
+    style="background-image:url(https://serajj.sa/wp-content/uploads/2023/10/Header2.png);">
+    <div class="overlay-main bg-black opacity-07"></div>
+    <div class="container">
+        <div class="mt-bnr-inr-entry">
+            <div class="banner-title-outer">
+                <div class="banner-title-">
+                    <h1 class="m-b0"> المقالات</h1>
+                </div>
+            </div>
+            <!-- BREADCRUMB ROW -->
+
+           
+
+            <!-- BREADCRUMB ROW END -->
+        </div>
+    </div>
+</div>
+<!--Home slider-->
+
+
+<!-- OUR BLOG START -->
+ <section class="section-full mobile-page-padding latest-blog-wrap p-tb50 square_shape1">
+  <div class="container">
+      
+      <!-- IMAGE CAROUSEL START -->
+      <div class="section-content">
+          <div class="row d-flex justify-content-center">
+              <div class="col-lg-4 col-md-6">
+                  <div class="mt-box blog-post latest-blog-3 date-style-1 m-b30">
+                      <div class="mt-post-media mt-img-overlay7">
+                          <a href="javascript:;"><img src="{% static 'assets/images/home-bg1.jpg' %}" alt=""></a>
+                      </div>
+                      <div class="mt-post-info p-a30 bg-gray">
+                          <div class="post-overlay-position">
+                              <div class="mt-post-meta ">
+                                  <ul>
+                                    <li class="post-date">2002</span></li>
+                                    <li class="post-author">بواسطة <a href="javascript:;"> </a> </li>
+                                      <li class="post-comment"><a href="javascript:;">2 تعليق</a> </li>
+                                  </ul>
+                              </div>                                        
+                              <div class="mt-post-title ">
+                                  <h4 class="post-title m-b0">التصميم التجاري للمشروع
+                                </h4>
+                              </div>
+                              <div class="mt-post-text">
+                                  <p>كل السرور هو الترحيب بكل آلام يتم تجنبها. في ظروف معينة الالتزامات. </p> 
+                              </div>
+                              <div class="readmore-line">
+                                  <span><a href="" class="site-button-link" data-hover="اقرأ أكثر">اقرأ أكثر <i class="fa fa-angle-right arrow-animation"></i></a></span>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              <div class="col-lg-4 col-md-6">
+                <div class="mt-box blog-post latest-blog-3 date-style-1 m-b30">
+                    <div class="mt-post-media mt-img-overlay7">
+                        <a href="javascript:;"><img src="{% static 'assets/images/home-bg1.jpg' %}" alt=""></a>
+                    </div>
+                    <div class="mt-post-info p-a30 bg-gray">
+                        <div class="post-overlay-position">
+                            <div class="mt-post-meta ">
+                                <ul>
+                                  <li class="post-date">2002</span></li>
+                                  <li class="post-author">بواسطة <a href="javascript:;"> </a> </li>
+                                    <li class="post-comment"><a href="javascript:;">2 تعليق</a> </li>
+                                </ul>
+                            </div>                                        
+                            <div class="mt-post-title ">
+                                <h4 class="post-title m-b0">التصميم التجاري للمشروع
+                              </h4>
+                            </div>
+                            <div class="mt-post-text">
+                                <p>كل السرور هو الترحيب بكل آلام يتم تجنبها. في ظروف معينة الالتزامات. </p> 
+                            </div>
+                            <div class="readmore-line">
+                                <span><a href="" class="site-button-link" data-hover="اقرأ أكثر">اقرأ أكثر <i class="fa fa-angle-right arrow-animation"></i></a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% for post in posts %}
+
+            <div class="col-lg-4 col-md-6">
+                <div class="mt-box blog-post latest-blog-3 date-style-1 m-b30">
+                    <div class="mt-post-media mt-img-overlay7">
+                        <a href="{% url 'post:blog_single' post.slug %}"><img src="{{ post.image.url }}" alt=""></a>
+                    </div>
+                    <div class="mt-post-info p-a30 bg-gray">
+                        <div class="post-overlay-position">
+                            <div class="mt-post-meta ">
+                                <ul>
+                                  <li class="post-date">{{post.published_at|date:"M d, Y"}}</span></li>
+                                  <li class="post-author">بواسطة <a href="javascript:;"> {{post.user.author}}</a> </li>
+                                    <li class="post-comment"><a href="javascript:;">2 تعليق</a> </li>
+                                </ul>
+                            </div>                                        
+                            <div class="mt-post-title ">
+                                <h4 class="post-title m-b0"> {{post.get_title}}
+
+                              </h4>
+                            </div>
+                            <div class="mt-post-text">
+                                <p>{{post.get_content|truncatewords:"30"}}</p>
+                            </div>
+                            <div class="readmore-line">
+                                <span><a href="{% url 'post:blog_single' post.slug %}" class="site-button-link" data-hover="اقرأ أكثر">اقرأ أكثر <i class="fa fa-angle-right arrow-animation"></i></a></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <h2>No Posts Yet</h2>
+            {% endfor %}
+          </div>
+      </div>
+  </div>
+</section>   
+<!-- OUR BLOG END -->
+{% endblock %} 

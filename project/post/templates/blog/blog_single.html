@@ -1,0 +1,158 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}المقالات |{% endblock %}
+{% load i18n %}
+
+{% block bodyweb %}   
+
+<!--Home slider-->
+<div class="mt-bnr-inr overlay-wraper bg-parallax bg-top-center"
+    style="background-image:url(https://serajj.sa/wp-content/uploads/2023/10/Header2.png);">
+    <div class="overlay-main bg-black opacity-07"></div>
+    <div class="container">
+        <div class="mt-bnr-inr-entry">
+            <div class="banner-title-outer">
+                <div class="banner-title- text-white">
+                    <h1 class="m-b0">  {{post.title}}</h1>
+                </div>
+            </div>
+            <!-- BREADCRUMB ROW -->
+
+           
+
+            <!-- BREADCRUMB ROW END -->
+        </div>
+    </div>
+</div>
+<!--Home slider-->
+
+
+<!-- CONTENT START -->
+<div class="page-content">
+    <!-- SECTION CONTENT START -->
+    <div class="section-full p-tb50 square_shape1 square_shape3 inner-page-padding">
+        <div class="container">
+        <div class="blog-single-wrap-width">
+                <div class="blog-post date-style-3 blog-detail text-black">
+                    <div class="mt-post-media clearfix m-b30">
+                        <ul class="grid-post">
+                            <li>
+                                <div class="portfolio-item">
+                                    <img class="img-responsive" src="{{ post.image.url }}" alt="">
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-post-meta ">
+                        <ul>
+                            <li class="post-date"><strong>{{post.published_at|date:"M d, Y"}} </strong></li>
+                            <li class="post-author">بواسطة <span>{{post.author}}</span></li>
+                            <li class="post-category"><span>تقليدي</span></li>
+                        </ul>
+                    </div>                                                  
+                    <div class="mt-post-title">
+                        <h2 class="post-title">{{blog.title}} </h2>
+                    </div>
+                    
+                    <div class="mt-post-text">
+                        <p>
+                            {{post.get_content}}
+
+                        </p>
+                    </div>
+                    <div class="autor-post-tag-share bdr-t-1 bdr-solid bdr-gray p-t20">
+                        <div class="row">
+                            <div class="col-md-12 col-sm-12" style="text-align: center;">
+                                <div class="mt-box">
+                                <div class="clearfix">
+                                    <div class="widget_social_inks">
+                                        <ul class="social-icons social-md social-square social-dark m-b0">
+                                            <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
+                                            <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
+                                            <li><a href="javascript:void(0);" class="fa fa-rss"></a></li>
+                                            <li><a href="javascript:void(0);" class="fa fa-youtube"></a></li>
+                                            <li><a href="javascript:void(0);" class="fa fa-instagram"></a></li>
+                                        </ul>
+                                </div>
+                                </div>
+                                
+                            </div>
+                            </div>
+                        </div> 
+                    </div>                                              
+                </div>
+
+                <!-- TITLE START -->
+                         
+                <!-- TITLE END --> 
+    
+                <!-- IMAGE CAROUSEL START -->
+                
+            
+                <div class="clear" id="comment-list">
+                    <div class="comments-area" id="comments">
+                        <h2 class="comments-title">{{blog.blog_comments.count}} {% trans 'comments' %}</h2>
+                        <div class="p-tb30">
+                            <!-- COMMENT LIST START -->
+                            <ol class="comment-list">
+                                {% for comment in comments %}
+                                <li class="comment">
+                                    <!-- COMMENT BLOCK -->
+                                    <div class="comment-body">
+                                        <div class="comment-meta">
+                                            <h6><a href="">{{comment.user.username}}</a></h6>
+
+                                            <a href="javascript:void(0);">{{comment.created_at}}</a>
+                                            <a href="javascript:void(0);">{{comment.created_date}}</a>
+                                        </div>                                        
+                                        <div class="comment-author vcard">
+                                            <img class="avatar photo" src="{% static 'assets\images\order-icon.jpg' %}" alt="">
+                                            <cite class="fn"> {{comment.user_comment}} </cite>
+                                            <span class="says">يقول:</span>
+                                        </div>
+                                        <p>{{comment.content}}</p>
+                                        <div class="reply">
+                                            <a href="javscript:;" class="comment-reply-link letter-spacing-2 text-uppercase">رد</a>
+                                        </div>
+                                    </div>
+                                    <!-- SUB COMMENT BLOCK -->
+                                   
+                                </li>
+                                {% endfor %}
+                            </ol>
+                            <!-- COMMENT LIST END -->
+                            
+                            <!-- LEAVE A REPLY START -->
+                            <div class="comment-respond m-t30" id="respond">
+
+                                <h2 class="comment-reply-title" id="reply-title">ترك تعليق
+                                    <small>
+                                        <a style="display:none;" href="#" id="cancel-comment-reply-link" rel="nofollow">إلغاء الرد</a>
+                                    </small>
+                                </h2>
+
+                                <form class="comment-form bdr-1 bdr-solid bdr-gray p-a20" id="commentform" method="post">
+                                    {% csrf_token %}
+                                    {{comment_form}}                                    <p class="comment-form">
+
+                                    <p class="form-submit">
+                                        <button name="submit" type="submit" value="Submit" class="btn btn-sm rounded-pill m-4 " style="border-style: solid;
+                                        border-width: 2px 2px 2px 2px;
+                                        ">ارسال
+
+                    </button>                                    </p>
+                                    
+                                </form>
+
+                            </div>
+                            <!-- LEAVE A REPLY END -->
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- SECTION CONTENT END -->
+</div>  
+<!-- OUR BLOG END -->
+{% endblock %} 
