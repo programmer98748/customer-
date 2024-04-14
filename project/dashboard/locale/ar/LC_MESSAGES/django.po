@@ -1,0 +1,311 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE"S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-14 04:14+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
+"&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+
+#: .\dashboard\forms.py:10 .\dashboard\forms.py:32
+msgid "username"
+msgstr "اسم السمتخدم"
+
+#: .\dashboard\forms.py:11
+msgid "Password"
+msgstr "كلمة السر"
+
+#: .\dashboard\forms.py:12
+msgid "Confirm Password"
+msgstr "تأكيد كلمة المرور"
+
+#: .\dashboard\forms.py:13 .\dashboard\forms.py:33
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#: .\dashboard\forms.py:173 .\dashboard\forms.py:189
+msgid "Write your title here"
+msgstr ""
+
+#: .\dashboard\forms.py:177 .\dashboard\forms.py:193
+msgid "Write content here"
+msgstr ""
+
+#: .\dashboard\models.py:83
+msgid "name arabic"
+msgstr ""
+
+#: .\dashboard\models.py:84
+msgid "name english"
+msgstr ""
+
+#: .\dashboard\models.py:86
+#, fuzzy
+#| msgid "description"
+msgid "description arabic"
+msgstr "الوصف"
+
+#: .\dashboard\models.py:87
+#, fuzzy
+#| msgid "description"
+msgid "description english"
+msgstr "الوصف"
+
+#: .\dashboard\models.py:89
+msgid "logo white"
+msgstr ""
+
+#: .\dashboard\models.py:90
+msgid "logo icon black"
+msgstr ""
+
+#: .\dashboard\models.py:92
+msgid "address"
+msgstr "العنوان"
+
+#: .\dashboard\models.py:93
+msgid "email"
+msgstr "البريد الالكتروني"
+
+#: .\dashboard\models.py:94
+msgid "telephone"
+msgstr " رقم الهاتف"
+
+#: .\dashboard\models.py:95
+msgid "facebook"
+msgstr "رابط فيسبوك"
+
+#: .\dashboard\models.py:96
+msgid "twitter"
+msgstr "رابط تويتر"
+
+#: .\dashboard\models.py:97
+msgid "instagram"
+msgstr "رابط انستجرام"
+
+#: .\dashboard\models.py:98
+msgid "whatsapp"
+msgstr "رابط وتساب"
+
+#: .\dashboard\models.py:99
+msgid "maps"
+msgstr "رابط الخريطة"
+
+#: .\dashboard\models.py:100
+msgid "pubilished_at"
+msgstr ""
+
+#: .\dashboard\models.py:178
+#: .\dashboard\templates\dashboard\post\post_list.html:40
+msgid "image"
+msgstr "الصورة"
+
+#: .\dashboard\models.py:226
+#: .\dashboard\templates\dashboard\post\post_list.html:84
+#: .\dashboard\templates\dashboard\post\posts_lang_lish.html:71
+msgid "Active"
+msgstr "نشط"
+
+#: .\dashboard\models.py:227
+#: .\dashboard\templates\dashboard\post\post_list.html:86
+#: .\dashboard\templates\dashboard\post\posts_lang_lish.html:73
+msgid "Inactive"
+msgstr "غير نشط"
+
+#: .\dashboard\models.py:234 .\dashboard\models.py:280
+msgid "language"
+msgstr "اللغات"
+
+#: .\dashboard\models.py:277
+#: .\dashboard\templates\dashboard\services\services.html:18
+#: .\dashboard\templates\dashboard\services\services_add.html:17
+#: .\dashboard\templates\dashboard\services\services_edite.html:17
+msgid "services"
+msgstr "الخدمات"
+
+#: .\dashboard\models.py:278
+#: .\dashboard\templates\dashboard\post\post_list.html:39
+#: .\dashboard\templates\dashboard\post\posts_lang_lish.html:39
+#, fuzzy
+#| msgid "title_name"
+msgid "title"
+msgstr "العنوان الوصفي الظاهر علي الخلفية"
+
+#: .\dashboard\models.py:279
+msgid "description"
+msgstr "الوصف"
+
+#: .\dashboard\models.py:281
+msgid "active"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\brands\brands.html:5
+#: .\dashboard\templates\dashboard\brands\brands.html:18
+msgid "brands"
+msgstr "عملائنا"
+
+#: .\dashboard\templates\dashboard\brands\brands.html:17
+msgid "Home"
+msgstr "الصفحة الرئيسية"
+
+#: .\dashboard\templates\dashboard\comment_list.html:4
+#: .\dashboard\templates\dashboard\comment_list.html:17
+msgid "comments list"
+msgstr "قائمة التعليقات"
+
+#: .\dashboard\templates\dashboard\comment_list.html:28
+msgid "comments"
+msgstr "التعليقات"
+
+#: .\dashboard\templates\dashboard\comment_list.html:57
+#: .\dashboard\templates\dashboard\confirm_delete.html:6
+#: .\dashboard\templates\dashboard\post\post_list.html:47
+#: .\dashboard\templates\dashboard\post\posts_lang_lish.html:42
+msgid "delete"
+msgstr "حذف"
+
+#: .\dashboard\templates\dashboard\confirm_delete.html:9
+msgid "Are You Sure You Want Delete"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\confirm_delete.html:23
+msgid "no"
+msgstr "لا"
+
+#: .\dashboard\templates\dashboard\edit_information.html:17
+msgid "settings "
+msgstr "بيانات الموقع"
+
+#: .\dashboard\templates\dashboard\list_users.html:17
+#: .\dashboard\templates\dashboard\list_users.html:29
+msgid "accounts list"
+msgstr "قائمة الحسابات"
+
+#: .\dashboard\templates\dashboard\list_users.html:29
+msgid "create new account"
+msgstr "انشاء حساب جديد"
+
+#: .\dashboard\templates\dashboard\list_users.html:36
+msgid "id"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\list_users.html:37
+msgid "UserName"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\list_users.html:38
+msgid "Fist Name"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\list_users.html:39
+msgid "Last Name"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\list_users.html:40
+msgid "Email Address"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\list_users.html:41
+msgid "Status"
+msgstr "الحالة"
+
+#: .\dashboard\templates\dashboard\list_users.html:42
+msgid "Date joined"
+msgstr "تاريخ الانضمام"
+
+#: .\dashboard\templates\dashboard\list_users.html:43
+#: .\dashboard\templates\dashboard\list_users.html:72
+msgid "Update"
+msgstr "تعديل"
+
+#: .\dashboard\templates\dashboard\list_users.html:44
+#: .\dashboard\templates\dashboard\list_users.html:73
+msgid "Delete"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\list_users.html:59
+msgid "Super User"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\list_users.html:61
+msgid "Staff"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\list_users.html:63
+msgid "inactive"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\list_users.html:65
+msgid "Editor"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\list_users.html:67
+msgid "Member"
+msgstr "الاعضاء"
+
+#: .\dashboard\templates\dashboard\post\post_list.html:41
+#: .\dashboard\templates\dashboard\post\posts_lang_lish.html:40
+msgid "languages"
+msgstr "اللغات"
+
+#: .\dashboard\templates\dashboard\post\post_list.html:42
+msgid "views"
+msgstr "عرض "
+
+#: .\dashboard\templates\dashboard\post\post_list.html:43
+msgid "published at"
+msgstr "التاريخ"
+
+#: .\dashboard\templates\dashboard\post\post_list.html:44
+msgid "add translate"
+msgstr "اضافة ترجمة"
+
+#: .\dashboard\templates\dashboard\post\post_list.html:45
+msgid "stat"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\post\post_list.html:46
+msgid "edite"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\post\post_list.html:81
+msgid "Add Translate"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\post\posts_lang_lish.html:4
+msgid "posts list"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\post\posts_lang_lish.html:41
+msgid "state"
+msgstr ""
+
+#: .\dashboard\templates\dashboard\post\posts_lang_lish.html:43
+msgid "update"
+msgstr ""
+
+#, fuzzy
+#~| msgid "username"
+#~ msgid "name"
+#~ msgstr "اسم السمتخدم"
+
+#~ msgid "image_icon"
+#~ msgstr "شعار الموقع"
+
+#~ msgid "image_footer"
+#~ msgstr "لوجو الموقع"
+
+#~ msgid "category_id"
+#~ msgstr "الفئة"

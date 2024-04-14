@@ -1,0 +1,131 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %} {% trans 'posts list' %}{% endblock %}
+
+{% block body %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-md-12 ">
+            <div class=" " style="margin-top: 10px;" > 
+              <ol class="breadcrumb ">
+                <li class="breadcrumb-item"><a href="{% url 'dashboard:home' %}"><i class="nav-icon fas fa-home"></i>الصفحة الرئيسية</a></li>
+                  <li class="breadcrumb-item"><a href="{% url 'dashboard:posts_language' %}">المشاريع</a></li>
+              </ol>          
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                  {{ message }}
+              </div>
+            {% endfor %}
+      <!-- Default bopost -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title"></h3>
+                  <div class="card-tools">
+                    <a href="{% url 'dashboard:post_create'%} " class="btn btn-success pull-left "><i class="fa fa-plus"></i>اضافة</a>
+                  </div>
+                </div>
+                <div class="card-body p-0 " >
+                  <table class="table table-striped projects" style="overflow: auto;">
+                      <thead>
+                          <tr>
+
+                           
+
+                            <th>{% trans 'title' %}</th>
+                            <th>{% trans 'languages' %}</th>
+                            <th>{% trans 'state' %}</th>
+                            <th>{% trans 'delete' %}</th>
+                            <th>{% trans 'update' %}</th>
+                        
+
+                             
+                          </tr>
+                      </thead>
+                      <tbody>
+                        {% for post in posts %}
+                          <tr>
+                              
+                              <td>
+                                    <a href="">
+                                        {{post.title|slice:'6'}}
+                                        {% if post.title|length > 6 %}
+                                        ...
+                                        {% endif %}
+                                    </a>                             
+                              </td>
+
+                         
+                              <td>
+                                <a href="">{{post.language}}</a>
+                                {% for post_lan in post.post_lang.all %}
+                                    , <a href="/{{post_lan.language}}/{{post.slug}}">{{post_lan.language}}</a>
+                                {% endfor %}
+                            </td>						
+
+                            {% if post.active %}
+                            <td><div class="btn btn-sm info">{% trans 'Active' %}</div></td>
+                            {% else %}
+                            <td><div class="btn btn-sm warning">{% trans 'Inactive' %}</div></td>
+                            {% endif %}
+                                    
+                            
+                              <td class="project-actions tepostt-center">
+                                  <a href="{% url 'dashboard:post_language_update' post.pk %}">
+                                    <i class="fas fa-edit"></i> 
+                                  </a>
+
+                                  
+                              </td>
+                              <td class="project-actions tepostt-center">
+                                <a href="{% url 'dashboard:post_language_delete' post.pk %}">
+                                    <i class="fas fa-trash"></i>
+                                  </a>
+                              </td>
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+          </div>
+        </div>
+      </div>
+      </div>
+            <!-- /.حذف -->
+      <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">هل أنت متأكد؟</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% for post in posts %}
+            <div class="modal-body">
+              <p>أأنت متأكد أنك تريد حذف العنصر المحدد؟ جميع العناصر المرتبطة بها سيتم حذفها:&hellip;</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <a class="delete" href="{% url 'dashboard:post_delete' post.id %}" >
+              <button type="button" class="btn btn-primary">نعم أنا متأكد</button>
+              </a>
+              {% endfor %}
+              <button type="button" class="btn btn-default" data-dismiss="modal"> لا ترجوع للخلف</button>
+            
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.card -->
+  </section>
+    <!-- /.content -->
+  </div>
+{% endblock %}

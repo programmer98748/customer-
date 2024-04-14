@@ -1,0 +1,389 @@
+{% extends 'website/base.html' %}
+{% load i18n %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+{% load static %}
+
+{% block title %} {% translate 'home' %} {% endblock %} 
+{% block bodyweb %}
+
+{% for inf in information_site%}
+
+<!--Home slider-->
+<section class="slideshow slideshow-wrapper" id="home">
+    <div class="home-slideshow">
+        <div class="slide">
+            <div class="blur-up lazyload">
+
+                <img class="blur-up lazyload desktop-hide" style="min-height: 100vh;"
+                    data-src="{{inf.logo_white}}"
+                    src="https://serajj.sa/wp-content/uploads/2023/10/Header2.png" alt="{{inf.name_ar}}"
+                    title="Stunning Design" />
+                <img class="blur-up lazyload mobile-hide" style="min-height: 80vh;"
+                    data-src="{{inf.logo_black}}"
+                    src="https://serajj.sa/wp-content/uploads/2023/10/Header2.png" alt="{{inf.name_ar}}"
+                    title="Stunning Design" />
+                <div class="container text-center">
+                    <div class="slideshow-content-in">
+                        <div class="wrap-caption animation style2 whiteText p-0">
+                            <h2 class="mega-title ss-mega-title mx-auto"><span class="text-typed"
+                                    data-elements="{% trans 'We Create We Influence To Results' %}"></span></h2>
+
+                            <div class="ss-btnWrap text-center" style="opacity: 5.; text-align: center;">
+                                <a class="btn btn-sm btn-primary rounded-pill m-4 mx-auto"
+                                    href="shop-right-sidebar.html" tabindex="" style="border-style: solid;
+                                                    border-width: 2px 2px 2px 2px;
+                                                    border-radius: 30px 30px 30px 30px;
+                                                    padding: 10px 20px 10px 20px;
+                                                    background-color: transparent;
+                                                    color: white;
+                                                    ">  {% translate 'Contact Us Now' %} </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!--End Home slider-->
+
+<!-- start about  -->
+<section class="alt-services mt-0 section pt-2">
+    <div class="container">
+
+        <div class="container aos-init aos-animate">
+ 
+            <div class="row justify-content-around gy-4" style="padding-left: ; margin: 0 15px 0 15px;">
+                <div class="col-md-4  aos-init aos-animate " data-aos="zoom-in" data-aos-delay="100">
+
+                    <div style="--width: 50%;">
+                        <img width="168" height="68" style=" background-position: center center;" alt="{{inf.name_ar}}"
+                            src="{{inf.background_image.url}}"
+                            class="attachment-full size-full wp-image-39 entered lazyloaded imagess text-center img-bg"
+                            alt="{{inf.name_ar}}"
+                            data-lazy-srcset="https://serajj.sa/wp-content/uploads/2023/09/about.webp 784w, https://serajj.sa/wp-content/uploads/2023/09/about-300x211.webp 300w, https://serajj.sa/wp-content/uploads/2023/09/about-768x541.webp 768w"
+                            data-lazy-sizes="(max-width: 784px) 100vw, 784px"
+                            data-lazy-src="https://serajj.sa/wp-content/uploads/2023/09/about.webp"
+                            data-ll-status="loaded" sizes="(max-width: 784px) 100vw, 784px"
+                            >
+
+                    </div>
+                </div>
+                <div class="col-md-8  " style="padding-left: ;">
+                    <div class="d-flex flex-column justify-content-center" style="--width: 60%;">
+                        <div class="--padding-inline-end: 50px;  max-width: 100%;">
+
+                                {% if  LANGUAGE_CODE ==  "ar" %}
+                                <h3>{{inf.name_ar}}</h3>
+                                <p class="p">{{ inf.description_ar}}</p>                            
+                                {% else %}
+
+                                <h3>{{inf.name_en}}</h3>
+                                <p class="p">{{ inf.description_en}}</p>                            
+
+                                {% endif %}                       
+                             </div>
+                    </div>
+
+                </div>
+                <div class="col-md-12  text-center" style="margin: 0;">
+                    <span class="btn btn-sm rounded-pill m-4" style="border-style: solid;
+                        border-width: 2px 2px 2px 2px;
+                        border-color: #000000;
+                        border-radius: 30px 30px 30px 30px;
+                        padding: 10px 20px 10px 20px;
+                        background-color: white;
+                        color: black;">{% translate 'Contact Us' %}</span>
+
+                </div>
+
+                {% endfor%}
+            </div>
+        </div>
+    </div>
+</section>
+<!--End about-->
+
+
+<!-- services -->
+<div class="section-full our-service2-wrap p-t40 p-b50 bg-white mobile-page-padding"
+    style="background-image:url(https://serajj.sa/wp-content/uploads/2023/09/services-bg.webp);">
+
+    <div class="container">
+
+        <!-- TITLE START -->
+        <div class="section-head">
+            <div class="mt-separator-outer separator-center">
+                <div class="mt-separator">
+                    <h2 class="text-uppercase sep-line-one text-white"> {% translate 'Our Services' %}</h2>
+                </div>
+            </div>
+        </div>
+        <!-- TITLE END -->
+
+        <!-- IMAGE CAROUSEL START -->
+        <div class="section-content">
+            <div class="row">
+                {% for service in services %}
+                <div class="col-lg-3 col-md-6 col-sm-6 text-white">
+                    <div class="mt-icon-box-wraper p-a30 center m-b30 box-shadow bg-">
+                        <div class="mt-icon-box-sm inline-icon site-text-primary  m-b20 radius scale-in-center bg-moving"
+                            style="background-image: url(&quot;images/background/line.png' %}&quot;); background-position: -1890px 0px;">
+                            <span class="icon-cell text-secondry">
+                                {% if service.image %}
+                                <img decoding="async" width="144" height="144"
+                                    src="{{service.image.url}}"
+                                    class="attachment-full size-full wp-image-59 entered lazyloaded flaticon-paint"
+                                    alt="" data-lazy-src="{{service.image.url}}"
+                                    data-ll-status="loaded">
+                                {% else %}
+
+                                <img decoding="async" width="144" height="144"
+                                    src="{{service.url}}"
+                                    class="attachment-full size-full wp-image-59 entered lazyloaded flaticon-paint"
+                                    alt="" data-lazy-src="{{service.url}}"
+                                    data-ll-status="loaded">
+                                {% endif %}
+
+                            </span>
+                        </div>
+                        <div class="icon-content">
+                            <h4 class="mt-tilte text-uppercase font-weight-600 m-b20"> {{service.title}}</h4>
+                            <p>
+                                {{service.description}}
+                            </p>
+
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                <div class="col-lg-3 col-md-6 col-sm-6 text-white">
+                    <div class="mt-icon-box-wraper p-a30 center m-b30 box-shadow bg-">
+                        <div class="mt-icon-box-sm inline-icon site-text-primary  m-b20 radius scale-in-center bg-moving"
+                            style="background-image: url(&quot;images/background/line.png' %}&quot;); background-position: -1890px 0px;">
+                            <span class="icon-cell text-secondry">
+                                <img decoding="async" width="144" height="144"
+                                    src="https://serajj.sa/wp-content/uploads/2023/09/service-2.webp"
+                                    class="attachment-full size-full wp-image-59 entered lazyloaded flaticon-paint"
+                                    alt="" data-lazy-src="https://serajj.sa/wp-content/uploads/2023/09/service-2.webp"
+                                    data-ll-status="loaded">
+                            </span>
+                        </div>
+                        <div class="icon-content">
+                            <h4 class="mt-tilte text-uppercase font-weight-600 m-b20">الإنتاج المرئي</h4>
+                            <p>نحن شركة تسويق رقمي نقدم خدمات التسويق عبر منصات التواصل الاجتماعي المختلفة
+                                من خلال تخطيط مدروس وتحليل منهجي وتقييم مستمر لأداء الحملات، هذا بالإضافة
+                                إلى خدمة SEO التي تجعلك تتصدر محركات البحث مقابل منافسينك.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-3 col-md-6 col-sm-6 text-white">
+                    <div class="mt-icon-box-wraper p-a30 center m-b30 box-shadow bg-">
+                        <div class="mt-icon-box-sm inline-icon site-text-primary  m-b20 radius scale-in-center bg-moving"
+                            style="background-image: url(&quot;images/background/line.png' %}&quot;); background-position: -1890px 0px;">
+                            <span class="icon-cell text-secondry">
+                                <img decoding="async" width="144" height="144"
+                                    src="https://serajj.sa/wp-content/uploads/2023/09/service-2.webp"
+                                    class="attachment-full size-full wp-image-59 entered lazyloaded flaticon-paint"
+                                    alt="" data-lazy-src="https://serajj.sa/wp-content/uploads/2023/09/service-2.webp"
+                                    data-ll-status="loaded">
+                            </span>
+                        </div>
+                        <div class="icon-content">
+                            <h4 class="mt-tilte text-uppercase font-weight-600 m-b20">إدارة حسابات التواصل
+                                الاجتماعي</h4>
+                            <p> نؤسس تواجد متكامل في منصات التواصل المختلفة لشركائنا، عبر الاستخدام الأمثل
+                                لكافة الأدوات الإبداعية بداية من الخطة وكتابة المحتوى والتصميم الإبداعي
+                                والردود على المتابعين.
+                        </div>
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-3 col-md-6 col-sm-6 text-white">
+                    <div class="mt-icon-box-wraper p-a30 center m-b30 box-shadow bg-">
+                        <div class="mt-icon-box-sm inline-icon site-text-primary  m-b20 radius scale-in-center bg-moving"
+                            style="background-image: url(&quot;images/background/line.png' %}&quot;); background-position: -1890px 0px;">
+                            <span class="icon-cell text-secondry">
+                                <img decoding="async" width="144" height="144"
+                                    src="https://serajj.sa/wp-content/uploads/2023/09/service-2.webp"
+                                    class="attachment-full size-full wp-image-59 entered lazyloaded flaticon-paint"
+                                    alt="" data-lazy-src="https://serajj.sa/wp-content/uploads/2023/09/service-2.webp"
+                                    data-ll-status="loaded">
+                            </span>
+                        </div>
+                        <div class="icon-content">
+                            <h4 class="mt-tilte text-uppercase font-weight-600 m-b20">صناعة المحتوى الإبداعي
+                            </h4>
+                            <p> نصنع أفكار استثنائية لعرض نشاطات شركائنا ونجسدها في محتوى متجدد يناسب طبيعة
+                                كل نشاط تجاري بداية من الملفات التعريفية إلى محتوى المواقع الإلكترونية
+                                ومحتوى منصات التواصل الاجتماعي.
+                        </div>
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
+<!--End service -->
+
+
+<!--Brand Logo Slider-->
+<div class="section-full p-t80 p-b50 site-bg- square_shape2  square_shape1 bg-moving mobile-page-padding" dir="rtl"
+    dir="rtl"
+    style="background-image: url(&quot;images/background/bg-6.png' %}&quot;); background-position: -1737px 0px;">
+    <div class="container">
+        <div class="section-content">
+
+            <!-- TITLE START -->
+            <div class="section-head">
+                <div class="mt-separator-outer separator-center">
+                    <div class="mt-separator">
+                        <h2 class="text-black text-uppercase sep-line-one ">{% translate 'Our Clients' %}</h2>
+                    </div>
+                </div>
+            </div>
+            <!-- TITLE END -->
+
+            <!-- TESTIMONIAL START -->
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12">
+                    <div class="logo-bar">
+                        {% for Brands in Brands %}
+
+                        <div class="logo-bar__item">
+                            <a href="brands-style1.html">
+                                {% if Brands.image %}
+
+                                <img class="blur-up lazyload"
+                                data-src="{{Brands.image.url}}"
+                                src="{{Brands.image.url}}" alt="brand"
+                                title="" />
+                                {% else %}
+
+                                <img class="blur-up lazyload"
+                                    data-src="{{Brands.url}}"
+                                    src="{{Brands.url}}" alt="brand"
+                                    title="" />
+                                    {% endif %}
+
+                                </a>
+                        </div>
+                        {% endfor %}
+
+                        <div class="logo-bar__item">
+                            <a href="brands-style1.html"><img class="blur-up lazyload"
+                                    data-src="https://serajj.sa/wp-content/uploads/2023/10/3-1.png"
+                                    src="https://serajj.sa/wp-content/uploads/2023/10/3-1.png" alt="brand" title="" /></a>
+                        </div>
+                         <div class="logo-bar__item">
+                            <a href="brands-style1.html"><img class="blur-up lazyload"
+                                    data-src="https://serajj.sa/wp-content/uploads/2023/10/17-1.png"
+                                    src="https://serajj.sa/wp-content/uploads/2023/10/17-1.png" alt="brand"
+                                    title="" /></a>
+                        </div>
+                        <div class="logo-bar__item">
+                            <a href="brands-style1.html"><img class="blur-up lazyload"
+                                    data-src="https://serajj.sa/wp-content/uploads/2023/10/3-1.png"
+                                    src="https://serajj.sa/wp-content/uploads/2023/10/3-1.png" alt="brand" title="" /></a>
+                        </div>
+                         <div class="logo-bar__item">
+                            <a href="brands-style1.html"><img class="blur-up lazyload"
+                                    data-src="https://serajj.sa/wp-content/uploads/2023/10/17-1.png"
+                                    src="https://serajj.sa/wp-content/uploads/2023/10/17-1.png" alt="brand"
+                                    title="" /></a>
+                        </div>
+                        <div class="logo-bar__item">
+                            <a href="brands-style1.html"><img class="blur-up lazyload"
+                                    data-src="https://serajj.sa/wp-content/uploads/2023/10/3-1.png"
+                                    src="https://serajj.sa/wp-content/uploads/2023/10/3-1.png" alt="brand" title="" /></a>
+                        </div>
+                         <div class="logo-bar__item">
+                            <a href="brands-style1.html"><img class="blur-up lazyload"
+                                    data-src="https://serajj.sa/wp-content/uploads/2023/10/17-1.png"
+                                    src="https://serajj.sa/wp-content/uploads/2023/10/17-1.png" alt="brand"
+                                    title="" /></a>
+                        </div>
+                        <div class="logo-bar__item">
+                            <a href="brands-style1.html"><img class="blur-up lazyload"
+                                    data-src="https://serajj.sa/wp-content/uploads/2023/10/3-1.png"
+                                    src="https://serajj.sa/wp-content/uploads/2023/10/3-1.png" alt="brand" title="" /></a>
+                        </div>
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--End Brand Logo Slider-->
+
+<!-- contact Section-->
+<div class="section-full p-tb40 inner-page-padding" style="background-color: #f3f3f3;">
+    <!-- LOCATION BLOCK-->
+    <div class="container">
+
+        <!-- GOOGLE MAP & CONTACT FORM -->
+        <div class="section-content">
+            <!-- CONTACT FORM-->
+            <div class="row">
+                <div class="col-lg-6 col-md-6">
+                    <form class="contact-form cons-contact-form" method="post" action="">
+                        <div class="contact-one m-b0">
+                            {% csrf_token %}
+
+                            <!-- TITLE START -->
+                            <div class="section-head" style="padding-bottom:0;">
+                                <div class="mt-separator-outer separator-center">
+                                    <div class="mt-separator">
+                                        <h2 class="text-uppercase sep-line-one "> {% translate 'Contact Us' %} </h2>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- TITLE END -->
+                            <div class="contact-one-inner" style="padding-top: 0px;">
+                                <div class="form-group">
+                                    {{form}}
+                                </div>
+                                
+
+                                 <div class="text-right">
+                                    <button name="submit" type="submit" value="Submit"
+                                        class="btn btn-sm rounded-pill m-4 " style="border-style: solid;
+                                                        border-width: 2px 2px 2px 2px;
+                                                        ">{% translate 'send' %}
+
+                                    </button>
+
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-md-6">
+                    <div class="gmap-outline">
+                        <div class="google-map" style="width: 100%">
+                            <iframe height="460"
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d927785.8221720181!2d45.573786644156314!3d24.721271063234898!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e2f03890d489399%3A0xba974d1c98e79fd5!2sRiyadh%20Saudi%20Arabia!5e0!3m2!1sen!2seg!4v1695248959708!5m2!1sen!2seg"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<!-- end contact Section-->
+
+{% endblock %}

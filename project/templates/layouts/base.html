@@ -1,0 +1,74 @@
+{% load static %}
+{% load i18n %}
+{% get_current_language_bidi as LANGUAGE_BIDI %}
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>
+      لوحة تحكم الموقع - {% block title %}  {% endblock %} 
+    </title>
+     <!-- Ionicons -->
+    <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+      <!-- Google Font: Source Sans Pro 
+    <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
+    -->
+    <!-- Bootstrap 4 RTL -->
+    <link rel="stylesheet" href="https://cdn.rtlcss.com/bootstrap/v4.2.1/css/bootstrap.min.css">      
+  
+    {% include "includes/style.html" %}
+        <!-- alertify -->
+    <link rel="stylesheet" href="{% static 'assets/alertify.min.css' %}"> 
+
+      {% if LANGUAGE_BIDI %}
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/bootstrap/custom_rtl.css' %}"> 
+    <!-- Custom style for RTL -->
+    <link rel="stylesheet" href="{% static 'assets/dist/css/custom.css' %}">
+
+  {% endif %}       
+  </head>
+  <body class="hold-transition sidebar-mini">
+    <div class="wrapper">
+        {% include "includes/navigation.html" %}
+        {% include "includes/sidenav.html" %}
+      
+        {% block body %}
+          
+        {% endblock %}
+
+        <!-- Control Sidebar -->
+        <aside class="control-sidebar control-sidebar-dark" dir="rtl" style="left: 0;right: auto;">
+          <!-- Control sidebar content goes here -->
+        </aside>
+        <!-- /.control-sidebar -->
+
+    {% include "includes/footer.html" %}
+
+    {% include "includes/scripts.html" %}
+  
+  </div><!-- ./wrapper -->
+
+  <script src="{% static 'assets/alertify.min.js' %}"></script>
+    <!-- <script>            
+        alertify.set('notifier','position', 'top-right');
+        {% for msg in messages %}
+            alertify.success('{{ msg }}');
+        {% endfor %}
+    </script> -->
+  <script type="text/javascript">
+      $(function () {
+          // Hide message
+          $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+              $(".alert").slideUp(500);
+          });
+      });
+  </script>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js" integrity="sha512-X/YkDZyjTf4wyc2Vy16YGCPHwAY8rZJY+POgokZjQB2mhIRFJCckEGc6YyX9eNsPfn0PzThEuNs+uaomE5CO6A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  </body>
+</html>

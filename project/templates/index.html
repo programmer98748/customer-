@@ -1,0 +1,182 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block body %}
+   
+<!-- Content Wrapper. Contains page content -->
+<div class="content-wrapper">
+  <div class="content-header">
+    <div class="container-fluid">
+      <div class="row mb-2">
+        <div class="col-sm-6">
+          <a href="{% url 'dashboard:home' %}"><i class="nav-icon fas fa-home"></i> الصفحة الرئيسية للوحة تحكم الموقع </a>
+        </div><!-- /.col -->
+        
+      </div><!-- /.row -->
+    </div><!-- /.container-fluid -->
+  </div>
+  <section class="content">
+    <div class="container-fluid">
+
+              <!-- Info boxes -->
+              <div class="row">
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box">
+                    <span class="info-box-icon bg-info elevation-1"><i class="fas fa-cog"></i></span>
+      
+                    <div class="info-box-content">
+                      <span class="info-box-text">المستخدمين</span>
+                      <span class="info-box-number">
+                        10
+                        <small>%</small>
+                      </span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box mb-3">
+                    <span class="info-box-icon bg-danger elevation-1"><i class="fas fa-tag"></i></span>
+      
+                    <div class="info-box-content">
+                      <span class="info-box-text">الاقسام</span>
+                      <span class="info-box-number">41,410</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+      
+                <!-- fix for small devices only -->
+                <div class="clearfix hidden-md-up"></div>
+      
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box mb-3">
+                    <span class="info-box-icon bg-success elevation-1"><i class="fas fa-shopping-cart"></i></span>
+      
+                    <div class="info-box-content">
+                      <span class="info-box-text">التعليقات</span>
+                      <span class="info-box-number">760</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+                <div class="col-12 col-sm-6 col-md-3">
+                  <div class="info-box mb-3">
+                    <span class="info-box-icon bg-warning elevation-1"><i class="fas fa-users"></i></span>
+      
+                    <div class="info-box-content">
+                      <span class="info-box-text">الصفحات</span>
+                      <span class="info-box-number">2,000</span>
+                    </div>
+                    <!-- /.info-box-content -->
+                  </div>
+                  <!-- /.info-box -->
+                </div>
+                <!-- /.col -->
+              </div>
+              <!-- /.row -->
+                      <!-- Info boxes -->
+   
+        <!-- /.row -->
+
+      <h5 class="mb-2" >الوصول السريع</h5>
+      <div class="row text-center">
+        <!-- /.col -->      
+        <div class="col-md-3 col-sm-3 col-6">
+          <div class="info-box">
+            <span class="info-box-icon bg-danger" style="width: 100%; background-color: #c0392b">
+             <a href="">
+              <h4>استعراض الموقع</h4>  
+             </a>
+            </span>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-md-3 col-sm-3 col-6">
+          <div class="info-box">
+            <span class="info-box-icon bg-success" style="width: 100%;">
+              <a href="{% url 'dashboard:informaion_site'  %}">
+                <h4>تعديل البيانات الموقع</h4>
+              </a>
+            </span>
+            <!-- /.info-box-content -->
+          </div>
+        </div>
+        <div class="col-md-3 col-sm-3 col-6" style="text-align: center;">
+          <div class="info-box">
+            <span class="info-box-icon bg-warning" style="width: 100%;background-color: ">
+              <a href="{% url 'dashboard:services_add'%}">
+                <h4>إضافة قسم</h4>
+              </a>
+            </span>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+        <div class="col-md-3 col-sm-3 col-6">
+          <div class="info-box">
+            <span class="info-box-icon bg-info " style="width: 100%; background-color: #2c3e50">
+              <a href="{% url 'dashboard:posts'  %}">
+                <h4>إضافة مقال</h4>
+              </a>
+            </span>
+            <!-- /.info-box-content -->
+          </div>
+          <!-- /.info-box -->
+        </div>
+      </div>
+      <!-- =========================================================== -->
+      <h5 class="mt-4 mb-2">احصائيات عامة للموقع </h5>
+      <!-- Small boxes (Stat box) -->
+      <div class="row">
+         <!-- ./col -->
+         <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-warning">
+            <div class="inner">
+              <h3>{{project}}</h3>
+              <p style="text-align: center; " class="">عدد الاقسام</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-person-add"></i>
+            </div>
+            <a href="{% url 'dashboard:services' %}" class="small-box-footer"> عرض المزيد <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <div class="col-lg-3 col-6">
+          <!-- small box -->
+          <div class="small-box bg-info">
+            <div class="inner">
+              <h3>{{posts}}</h3>
+              <p style="text-align: center;">عدد الصور</p>
+            </div>
+            <div class="icon">
+              <i class="ion ion-bag"></i>
+            </div>
+            <a href="{% url 'dashboard:posts' %}" class="small-box-footer">  عرض المزيد  <i class="fas fa-arrow-circle-right"></i></a>
+          </div>
+        </div>
+        <!-- ./col -->
+        <!-- ./col -->
+      </div>
+      <!-- /.row -->
+      <!-- Main row -->
+      <!-- /.row (main row) -->
+    </div><!-- /.container-fluid -->
+  </section>
+
+
+  <!-- /.content -->
+
+
+</div>
+
+{% endblock body %}

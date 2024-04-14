@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+{% load i18n %}
+{% block body %}
+<div class="content-header">
+  <legend>
+    {% trans 'delete' %} {{object}}
+  </legend>
+</div>
+<p>{% trans 'Are You Sure You Want Delete' %}'{{object}}'</p>
+<form action="" method="post">
+  {% csrf_token %}
+  <input type="submit" value="Yes, Delete it" class="btn info">
+  <a href="
+  {% if 'comment' in request.path %}
+    {% url 'dashboard:comments' %}  
+  {% elif 'post' in request.path %}    
+    {% url 'dashboard:posts' %}
+  {% elif 'category' in request.path %}
+    {% url 'dashboard:categories' %}
+  {% else %}
+    {% url 'dashboard:accounts' %}
+  {% endif %}
+  " class="btn info">{% trans 'no' %}</a>
+</form>
+{% endblock content  %}

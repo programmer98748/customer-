@@ -224,7 +224,7 @@
     #MobileNav li a .lbl.nm_label5:after { border-right-color:#af4de2 }
     #MobileNav.medium li a { font-weight: 500; }
     #MobileNav.text-capitalize li a { text-transform: capitalize; }
-    #MobileNav li ul { display:none; list-style:none; padding:0; margin:0; }
+    #MobileNav li ul { /*display:none;*/ list-style:none; padding:0; margin:0; }
     #MobileNav li li a { padding-left:20px; padding-top:12px; padding-bottom:12px;  }
     #MobileNav li li li a { padding-left:30px; font-size: 13px; } 
     #MobileNav li li li li a { padding-left:40px; font-size: 13px; }

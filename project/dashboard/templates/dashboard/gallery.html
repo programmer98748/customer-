@@ -1,0 +1,251 @@
+{% extends 'layouts/base.html' %}
+
+{% block title %} معرض الصور{% endblock %}
+{% load static %}
+{% load crispy_forms_tags %}
+{% block stylesheet %}{% endblock %}
+{% block body %}
+ 
+<script>
+  $(document).ready(function() {
+  // Get the list of all images
+  var images = $(".image");
+
+  // Create an array to store the selected images
+  var selectedImages = [];
+
+  // Add an event listener to the checkbox of each image
+  images.find("input[type='checkbox']").click(function() {
+    // Get the value of the checkbox
+    var value = $(this).val();
+
+    // Check if the checkbox is checked
+    var isChecked = $(this).is(":checked");
+
+    // Update the checkbox state
+    $(this).attr("checked", isChecked);
+
+    // If the checkbox is checked, add it to the array of selected images
+    if (isChecked) {
+      selectedImages.push(value);
+    } else {
+      selectedImages.splice(selectedImages.indexOf(value), 1);
+    }
+  });
+
+  // Add an event listener to the delete button
+  $("#delete-button").click(function() {
+    // Send the list of selected images to the server
+    $.post("/gallery/delete", { images: selectedImages }, function(data) {
+      // If the request is successful, reload the page
+      if (data.success) {
+        location.reload();
+      }
+    });
+  });
+});
+
+
+
+</script>
+
+
+
+<script>
+  $(function () {
+    $(document).on('click', '[data-toggle="lightbox"]', function(event) {
+      event.preventDefault();
+      $(this).ekkoLightbox({
+        alwaysShowClose: true
+      });
+    });
+
+    $('.filter-container').filterizr({gutterPixels: 3});
+    $('.btn[data-filter]').on('click', function() {
+      $('.btn[data-filter]').removeClass('active');
+      $(this).addClass('active');
+    });
+  })
+</script>
+
+   <!--  image Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row ">
+          <div class="col-md-12 ">
+            <div class=" " style="margin-top: 10px;" >  
+              <ol class="breadcrumb ">
+                <li class="breadcrumb-item"><a href="{% url 'home:home' %}"><i class="nav-icon fas fa-home"></i> الصفحة الرئيسية </a></li>
+                <li class="breadcrumb-item active"><a href="{% url 'home:gallery' %}">الصور</a></li>
+              </ol>
+
+            {% for message in messages %}
+            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                {{ message }}
+            </div>
+            {% endfor %}
+            
+            <div class="card ">
+              
+
+               
+                <div class="card-header">
+                  <div class="card-tools">
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-lg">
+                      <i class="fa fa-plus"></i>اضافة 
+                    </button>   
+
+
+                  </div>
+
+
+                  <div class="card-title">
+                    <div class="float-right">
+                      <form action="{% url 'home:delete' %}" method="POST">  
+                        {% csrf_token %}  
+
+                      <div class="mb-2">
+                        <button type="submit" class="btn btn-secondary">حذف</button>
+
+                        <div class="float-right">
+
+                          
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                </div>
+
+                <div class="card-body ">
+                    <div>
+                      <div class="btn-group w-100 mb-2 row" style="margin: auto;" >
+                        <a class="btn btn-info active  " href="{% url 'home:gallery' %}" > الكل </a>
+                        {% for project in categories %}
+                        <a class="btn btn-info btn-sm  "  data-filter="{{project.id}}" href="{% url 'home:gallery' %}?project={{ project.name}}" > {{project.name|truncatewords:3}}  </a>
+                        {% endfor %}
+                      </div>
+                      
+                    </div>
+                     
+              
+
+                    <div class="filter-container p-0 row" id="example" class="display datatable">
+                      {% for image in images %}
+
+                      <div class="filtr-item col-sm-3 photoshide photos{{photos.project.id}}" >
+                          <div class="image">
+
+                          <input type="checkbox" name="images[]" value="{{ image.id }}"> 
+
+                          <a href="#" data-toggle="lightbox" data-title="sample 1 - white">
+                            <img src="{{ image.imageURL  }}" class="img-fluid mb-2" style="position: relative;" alt="{{photo.description}}"/>
+                        </a>
+                          </div>
+                      </div>
+
+                        {% empty %}
+                            <h6 class="text-center" style="margin: auto;">لايوجد صور ....</h6>
+
+ 
+                  
+                    </div>
+                    {% endfor %}
+
+
+                  </form>
+
+                </div>
+
+                
+            </div>
+
+
+
+
+          
+
+
+          </div>
+          </div>
+        </div>
+      </div>
+          <!-- /. اضافه -->
+      <div class="modal fade" id="modal-lg" style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-md">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">إضافة صورة</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <form method="POST" id ="id_form" action="" enctype="multipart/form-data" style="margin: 10px;"  >
+                <input type="text" name="id" class="hidden" style="display: contents;">
+                {% csrf_token %}
+              
+                {% if form.errors %}
+                  <div class="alert alert-danger alert-dismissible" role="alert">
+                    <div id="form_errors">
+                      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div> 
+                  </div>
+                {% endif %}
+
+                <div class="row">
+                    <div class="col-md-12">
+                      <div class="form-group">
+                          {{form|crispy}}
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="card-footer ">
+                        <button type="submit" class="btn btn-info"> حفظ</button>
+                      </div>
+                    </div>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+          <!-- /. حذف -->
+      <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">هل أنت متأكد؟</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>أأنت متأكد أنك تريد حذف العنصر المحدد؟ جميع العناصر المرتبطة بها سيتم حذفها:&hellip;</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              {% for photos in photos%}
+              <a class="delete" href="{% url 'home:gallery_delete' photos.id %}" >
+              <button type="button" class="btn btn-primary">نعم انا متأكد</button>
+              </a>
+              {% endfor %}
+              <button type="button" class="btn btn-default" data-dismiss="modal"> لا ترجوع للخلف</button>
+             
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+    </section>
+  </div>
+
+  
+
+
+
+
+  
+{% endblock body %}

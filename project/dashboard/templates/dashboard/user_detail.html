@@ -1,0 +1,62 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block title %}  تعديل {{ object.username }}{% endblock %}
+{% load i18n %}
+
+{% block body %}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content" >
+        <div class="container-fluid" >
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <div id="content-wrapper">
+                        <div class=" " style="margin-top: 10px;" >
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="{% url 'home:home' %}"><i class="nav-icon fas fa-home"></i>الصفحة الرئيسية</a></li>
+                                <li class="breadcrumb-item active">
+                                    <a href="{% url 'home:aluser' %}">المستخدمين</a>
+                                </li>
+                                <li class="breadcrumb-item">
+                                    <a href="">المستخدم : {{ object.username }}</a>
+                                </li>
+                            </ol>
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <i class="fas fa-table text-warning"></i>
+                                    Details Of User
+                                </div>
+                                <div class="card-body">
+                                    {% for message in messages %}
+                                        <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                                            {{ message }}
+                                        </div>
+                                    {% endfor %}
+
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <ul class="list-group">
+                                            <li class="list-group-item"><strong>Username:</strong> {{ object.username }}</li>
+                                            <li class="list-group-item"><strong>الاسم الاول :</strong> {{ object.first_name }}</li>
+                                            <li class="list-group-item"><strong>الاسم الاخير :</strong> {{ object.last_name }}</li>
+                                            <li class="list-group-item"><strong>البريد الاكلتروني :</strong>{{ object.email }}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="row top-buffer" style="padding-top: 10px">
+                                        <div class="col-12">
+                                                <a href="{% url 'home:aluser' %}"><button type="button" class="btn btn-success">رجوع</button></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'layouts/base.html' %}
+{% block title %} المستخدمين{% endblock %}
+{% load i18n %}
+
+{% block body %}
+  <div class="content-wrapper">
+    <section class="content" >
+      <div class="container-fluid " >
+        <div class="row">
+          <div class="col-12 mb-3">
+            <div id="content-wrapper">
+              <div class=" " style="margin-top: 10px;" >
+                  <ol class="breadcrumb">
+                    <li class="breadcrumb-item">
+                      <a href="{% url 'dashboard:home' %}"><i class="nav-icon fas fa-home"></i>الصفحة الرئيسية</a></li>
+                  <li class="breadcrumb-item active">
+                      <a href="{% url 'dashboard:accounts' %}">  {% trans 'accounts list' %}</a>
+                  </li>
+                  </ol>
+                        {% for message in messages %}
+                  <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                      {{ message }}
+                  </div>
+                        {% endfor %}
+                        
+                  <div class="card mb-3">
+                    <div class="card-header">
+                      <i class="fas fa-table"></i>
+                      {% trans 'accounts list' %}                      <a  class="btn btn-sm btn-success" href="{% url 'dashboard:accounts_create' %}" style="padding: 8px; float: left; background-color: green; color: white;">{% trans 'create new account' %}</a>
+                    </div>
+                    <div class="card-body">   
+                        <div class="table-responsive">
+                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                  <tr>
+                                    <th>{% trans 'id' %}</th>
+                                    <th>{% trans 'UserName' %}</th>
+                                    <th>{% trans 'Fist Name' %}</th>
+                                    <th>{% trans 'Last Name' %}</th>
+                                    <th>{% trans 'Email Address' %}</th>
+                                    <th>{% trans 'Status' %}</th>
+                                    <th>{% trans 'Date joined' %}</th>
+                                    <th>{% trans 'Update' %}</th>
+                                    <th>{% trans 'Delete' %}</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+
+                            {% if users %}
+                                {% for account in users %}
+                                    <tr>
+                                      <td>{{account.id}}</td>
+                                      <td>{{account.username|default:'N/A'|slice:'8'}}</td>
+                                      <td>{{account.first_name|default:'N/A'|slice:'8'}}</td>
+                                      <td>{{account.last_name|default:"N/A"|slice:'8'}}</td>
+                                      <td>{{account.email|default:'N/A'|slice:'8'}}</td>
+                                      <td>
+                                          {% if account.is_superuser %}
+                                              {% trans 'Super User' %}
+                                          {% elif account.is_staff %}
+                                              {% trans 'Staff' %}
+                                          {% elif not account.is_active %}
+                                              <p class="btn btn-sm danger">{% trans 'inactive' %}</p>
+                                          {% elif editors_group in account.groups.all %}               
+                                              {% trans 'Editor' %}
+                                          {% else %}               
+                                              {% trans 'Member' %}
+                                          {% endif %}
+                                      </td>
+                                      <td>{{account.date_joined|date:'d M Y h:i'}}</td>
+                                          
+                                      <td><a href="{% url 'dashboard:accounts_update' account.id %}" class="btn btn-sm warning">{% trans 'Update' %}</a></td>
+                                      <td><a href="{% url 'dashboard:accounts_delete' account.id %}" class="btn btn-sm danger">{% trans 'Delete' %}</a></td>
+                                    </tr>
+                                {% endfor %}
+                            {% endif %}
+                                </tbody>
+                            </table>
+
+                                {% if is_paginated %}
+                            <ul class="pagination">
+                              {% if page_obj.has_previous %}
+                                <li><a href="?page={{ page_obj.previous_page_number }}">&laquo;</a></li>
+                              {% else %}
+                                <li class="disabled"><span>&laquo;</span></li>
+                              {% endif %}
+                              {% for i in paginator.page_range %}
+                                {% if page_obj.number == i %}
+                                  <li class="active"><span>{{ i }} <span class="sr-only">(current)</span></span></li>
+                                {% else %}
+                                  <li><a href="?page={{ i }}">{{ i }}</a></li>
+                                {% endif %}
+                              {% endfor %}
+                              {% if page_obj.has_next %}
+                                <li><a href="?page={{ page_obj.next_page_number }}">&raquo;</a></li>
+                              {% else %}
+                                <li class="disabled"><span>&raquo;</span></li>
+                              {% endif %}
+                            </ul>
+                                {% endif %}
+                        </div>
+                    </div>
+                  </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+{% endblock %}
+
+{% block extrascripts %}
+  <script type="text/javascript">
+      $(function () {
+          // Hide message
+          $(".alert").fadeTo(2000, 500).slideUp(500, function () {
+              $(".alert").slideUp(500);
+          });
+      });
+  </script>
+{% endblock extrascripts %}

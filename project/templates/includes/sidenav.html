@@ -1,0 +1,149 @@
+{% load i18n %}
+
+{% load static %}
+
+  <!-- Main Sidebar Container -->
+  <aside class="main-sidebar sidebar-dark-primary elevation-4">
+    <!-- Brand Logo -->
+    <a href="{% url 'dashboard:profile' %}" class="brand-link">
+      <img src="{{ user.profile.image.url }}" alt="" class="brand-image img-circle elevation-3"
+           style="opacity: .8">
+      <span class="brand-text font-weight-light">{{user.username}}</span>
+    </a>
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <nav class="mt-2">
+        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <li class="nav-item has-treeview">
+            <a href="{% url 'dashboard:home' %}" class="nav-link">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>    {% trans 'dashboard' %} </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{% url 'dashboard:informaion_site'  %}" class="nav-link">
+              <i class="nav-icon fas fa-cog fa-fw"></i>
+              <p>{% trans 'site settings' %}  </p>
+            </a>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{% url 'dashboard:services' %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                <i class="right fas fa-angle-left"></i>
+                   {% trans 'tags' %} 
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'dashboard:services' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> {% trans 'services' %}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'dashboard:services' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> {% trans 'trans brands' %}</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+          <li class="nav-item has-treeview">
+            <a href="{% url 'dashboard:posts' %}" class="nav-link">
+              <i class="nav-icon fas fa-th"></i>
+              <p>
+                <i class="right fas fa-angle-left"></i>
+                   {% trans 'articles' %} 
+              </p>
+            </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{% url 'dashboard:posts' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> {% trans 'articles' %}</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'dashboard:posts_language' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p> {% trans 'translation articles' %}</p>
+                </a>
+              </li>
+              
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a href="{% url 'dashboard:brands'  %}" class="nav-link">
+              <i class="far fa-circle nav-icon"></i>
+              <p> {% trans 'brands' %}</p>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a href="{% url 'dashboard:accounts'  %}" class="nav-link">
+              <i class=" nav-icon fas fa-users"></i>
+              <p> {% trans 'users' %} </p>
+            </a>
+          </li>
+
+
+          <li class="nav-item">
+            <a href="{% url 'dashboard:gallery' %}" class="nav-link">
+              <i class="nav-icon far fa-image"></i>
+              <p>
+                  {% trans 'images' %} 
+              </p>
+            </a>
+          </li> 
+          <li class="nav-item has-treeview menu--open">
+            <a href="#" class="nav-link ">
+
+              <i class="nav-icon fas fa-book"></i>
+              <p>
+                 {% trans 'pages' %} 
+                <i class="right fas fa-angle-left"></i>
+
+                </p>
+              
+            
+            </a>
+            <ul class="nav nav-treeview">
+            
+              <li class="nav-item">
+                <a href="{% url 'dashboard:page' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>   {% trans 'home' %} </p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{% url 'dashboard:page_about' %}" class="nav-link">
+                  <i class="far fa-circle nav-icon"></i>
+                  <p>  {% trans 'about' %} </p>
+                </a>
+              </li>
+              
+            </ul>
+         </li>      
+         <li class="nav-item">
+          <a href="{% url 'dashboard:comments'  %}" class="nav-link">
+            <i class=" nav-icon fas fa-comments"></i>
+            <p> {% trans 'comments' %} </p>
+          </a>
+        </li>
+
+          <li class="nav-item has-treeview">
+            <a href="{% url 'logout' %}" class="nav-link">
+              <i class="fas fa-sign-out-alt"></i> 
+              <p>
+                  {% trans 'logout' %}
+              </p>
+            </a>
+          </li>  
+        </ul>
+      </nav>
+      <!-- /.sidebar-menu -->
+    </div>
+    <!-- /.sidebar -->
+  </aside>

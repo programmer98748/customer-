@@ -1,0 +1,86 @@
+{% load static %}
+{% load i18n %}
+        <!--Footer -->
+
+        <footer class="site-footer footer-large  footer-dark footer	footer-wide" style="display: block; "
+            style="font-size: 22px; font-weight: 500;">
+
+            <!-- FOOTER BLOCKES START -->
+            <div class="footer-top overlay-wraper">
+                <div class="overlay-main"></div>
+                <div class="container">
+                    {% for x in information_site %}
+
+                    <div class="row">
+
+                        <!-- ABOUT COMPANY -->
+                        <div class="col-lg-4 col-md-4 col-sm-6">
+                            <div class="widget widget_about" style="width: 80%;">
+                                <!--<h4 class="widget-title">About Company</h4>-->
+                                <div class="logo-footer clearfix p-b15">
+                                    <a href="index.html"><img
+                                            src="{{x.logo_black.url}}" alt=""></a>
+                                </div>
+                                <p class="max-w00">
+                                        
+                                        {% if  LANGUAGE_CODE ==  "ar" %}
+                                        <p >{{ x.description_ar|truncatewords:"50"}}</p>                            
+                                        {% else %}
+        
+                                        <p>{{ x.description_en|truncatewords:"50"}}</p>                            
+        
+                                        {% endif %}
+                                </p>
+
+                                <!--  <ul class="social-icons  mt-social-links">
+                                    <li><a href="javascript:void(0);" class="fa fa-google"></a></li>
+                                    <li><a href="javascript:void(0);" class="fa fa-rss"></a></li>
+                                    <li><a href="javascript:void(0);" class="fa fa-facebook"></a></li>
+                                    <li><a href="javascript:void(0);" class="fa fa-twitter"></a></li>
+                                    <li><a href="javascript:void(0);" class="fa fa-linkedin"></a></li>
+                                </ul>  -->
+                            </div>
+                        </div>
+
+
+
+                        <!-- USEFUL LINKS -->
+                        <div class="col-lg-4 col-md-4 col-sm-6 footer-col-3 ">
+                            <div class="widget widget_services inline-links">
+                                <h3 class="widget-title"> {% translate 'Our Services' %}</h3>
+                                <ul>
+                                    {% for s in services %}
+                                    <li><a href="#{{s.title}}" style="color:#FFFFFF;">{{s.title}}</a></li>
+                                    {% endfor %}
+                                    <li><a href="project-grid.html">المشاريع</a></li>
+                                    <li><a href="blog-grid.html">مدونة</a></li>
+                                    <li><a href="contact-1.html">اتصل بنا</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- RESENT POST -->
+                        <div class="col-lg-4 col-md-4 col-sm-6 ">
+                            <div class="widget widget_address_outer">
+                                <h3 class="widget-title"> {% translate 'Contact Info' %}</h3>
+                                <ul class="widget_address">
+
+                                    <li style="color: white;"><i class="an an-map-marker-al pt-1"></i>
+                                        {{x.address}}
+                                        
+                                    </li>
+                                    <li style="color: white;"><i class="an an-envelope-l"></i> {{x.email}}</li>
+                                    <li style="color: white;"> <i class="an an-phone-l"></i> {{x.mobile}}</li>
+                                </ul>
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor%}
+
+                </div>
+            </div>
+            <!-- FOOTER COPYRIGHT -->
+        </footer>
+
+        <!--End Footer-->

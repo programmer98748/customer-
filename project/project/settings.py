@@ -11,37 +11,72 @@ https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
 from pathlib import Path
-
 import os
+
+
 from django.utils.translation import gettext_lazy as _
 
+#from dotenv import load_dotenv
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-
-
+SECRET_KEY = 'django-insecure-t7n90bfv*_=1wa+ph-rov&h5sc(*sa#5l81@-a6*)tm0*ow^x2'
+#load_dotenv()
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-7^_%893$($n-bgjd1+n9+c(s+@dyy4$4my$*g*w%h0!w4e9=j7'
+#SECRET_KEY = os.environ.get('SECRET_KEY', 'aldkfjoi0') 
+#'django-insecure-t7n90bfv*_=1wa+ph-rov&h5sc(*sa#5l81@-a6*)tm0*ow^x2'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+#False
 ALLOWED_HOSTS = []
+#['146.190.172.182']
 
+''' Sakhr2Heam
+ gunicorn.service: Current command vanished from the unit file, execution of the command list won'>Sep 03 22:30:32 djangoproject gunicorn[89709]
+
+: gunicorn.socket: Failed with result 'service-start-limit-hit'.
+-- Boot 7a1a000c76864867af3ba63dcddb47c9 --
+sudo systemctl status gunicorn
+sudo systemctl restart nginxservice gunicorn restart 
+SECURE_PROXY_SSL_HEADER =()Sakhr2Heam
+CSRF_COOKIE_SECURE =True 
+gunicorn --bind 0.0.0.0:8000 project.wsgi
+SESSION_COOKIE_SECURE = True 
+SECURE_SSL_REDIRECT = True  django-storages
+
+SECURE_CONTENT_TYPE_NOSNIFF = True 
+SECURE_BROWSER_XSS_FILTER = True 
+SECURE_BROWSER_XSS_FILTER = True 
+include /etc/nginx/conf.d/*.conf;
+/home/sammy/myprojectdir/myprojectenv/bin/python3 -m uvicorn project.asgi:application --uds /tmp/uvicorn.sock
+SECURE_CONTENT_TYPE_NOSNIFF
+SECURE_HSTS_INCLUDE_SUBDOMAINS = True vim -r /etc/supervisor/supervisord.conf
 
 # Application definition
+ 
+#SECURE_CROSS_ORIGIN_POLICY = None
 
+'''
 INSTALLED_APPS = [
+    'dashboard',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'account',
     'website',
     'post',
+
+
+    'crispy_forms',
+    'crispy_bootstrap5',
+
 ]
 
 MIDDLEWARE = [
@@ -55,14 +90,16 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+
 ]
 
 ROOT_URLCONF = 'project.urls'
-
+#
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [ os.path.join(BASE_DIR , 'templates',)],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -70,6 +107,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'website.context_processors.navbar_categories',
+              
+
             ],
         },
     },
@@ -81,6 +121,8 @@ WSGI_APPLICATION = 'project.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
 
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -88,8 +130,9 @@ DATABASES = {
     }
 }
 
-
 # Password validation
+#SAkhr2Heam
+
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -110,7 +153,6 @@ AUTH_PASSWORD_VALIDATORS = [
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
-
 
 LANGUAGE_CODE = 'en'
 
@@ -133,12 +175,21 @@ LOCALE_PATHS = [
 
 
 
-#ALLOWED_UNICODE_SLUGS = True
-
-
+ALLOWED_UNICODE_SLUGS = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
+
+
+
+LOGIN_REDIRECT_URL = 'dashboard:home'
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+LOGIN_URL = 'dashboard/login'
+LOGOUT_REDIRECT_URL = "dashboard/login"  # Route defined in home/urls.py
+
+#AUTHENTICATION_BACKENDS = ['account.backends.EmailBackend']
 
 STATIC_URL = 'static/'
 
@@ -152,7 +203,24 @@ STATICFILES_DIRS = [
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
+# Default primary key field type
+# https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
+
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+#DEFAULT_FORM_FIELD = 'test@gmail.com'
+EMAIL_HOST_USER = 'programmer98748@gmail.com'
+EMAIL_HOST_PASSWORD = 'vyzplavzolraagqr'
+EMAIL_USE_TLS = True
+EMAIL_PORT = '587'
+#'587' #1025
+

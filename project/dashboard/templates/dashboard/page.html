@@ -1,0 +1,130 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block title %}  المقالات{% endblock %}
+{% block body %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-md-12 ">
+            <div class=" " style="margin-top: 10px;" > 
+              <ol class="breadcrumb ">
+                <li class="breadcrumb-item"><a href="{% url 'dashboard:home' %}"><i class="nav-icon fas fa-home"></i>الصفحة الرئيسية</a></li>
+                  <li class="breadcrumb-item"><a href="{% url 'dashboard:page' %}">المقالات</a></li>
+              </ol>          
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                  {{ message }}
+              </div>
+            {% endfor %}
+      <!-- Default box -->
+              <div class="card">
+                <div class="card-header">
+                  <h3 class="card-title"></h3>
+                  <div class="card-tools">
+                    <a href="{% url 'dashboard:page_add'%} " class="btn btn-success pull-left "><i class="fa fa-plus"></i>اضافة</a>
+                  </div>
+                </div>
+                <div class="card-body p-0 " style="overflow-x: auto;" >
+                  <table class="table table-striped projects">
+                      <thead>
+                          <tr>
+                              <th style="width: 1%">
+                                  #
+                              </th>
+                              <th style="width: 20%">
+                                  اسم
+                              </th>
+                              <th style="width: 10%">
+                                  صورة
+                              </th>
+                              <th style="" class="text-center">
+                                  آخر تحديث 
+                              </th>
+                              <th style="width: 10%" class="text-center py-0 align-middle">
+                                تحرير
+                              </th>
+                              <th style="width: 10%" class="text-center py-0 align-middle">
+                                حذف
+                              </th>
+                          </tr>
+                      </thead>
+                      <tbody>
+                        {% for x in post %}
+                          <tr>
+                              <td>
+                                #
+                            </td>
+                              <td>
+                                {{ x.title|truncatewords:2 }}                               
+                              </td>
+                              <td>
+                                  <ul class="list-inline">
+                                      <li class="list-inline-item">
+                                          <img alt="Avatar" class="table-avatar" src="{{ x.image.url }}">
+                                      </li>
+                                  </ul>
+                              </td>                    
+                              <td class="project-state">
+                                {{ x.create_at }}
+                              </td>
+                              <td class="text-center py-0 align-middle">
+                                <div class="btn-group btn-group-sm">
+                                  <a href="{% url 'dashboard:page_edite' x.id %}" class="">
+                                      <i class="fas fa-edit"></i></a>
+                               
+                                </div>
+                              </td>
+                              <td class="text-center py-0 align-middle">
+                                <div class="btn-group btn-group-sm">
+                                 
+                                  <a href="{% url 'dashboard:page_delete' x.id %}">
+                                   h   <i class="fas fa-trash"></i></a>
+                                </div>
+                              </td>
+                    
+                          </tr>
+                          {% endfor %}
+                      </tbody>
+                  </table>
+                </div>
+                <!-- /.card-body -->
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+      <!-- /.حذف -->
+      <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">هل أنت متأكد؟</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <p>أأنت متأكد أنك تريد حذف العنصر المحدد؟ جميع العناصر المرتبطة بها سيتم حذفها:&hellip;</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              {% for x in post %}
+              <a class="delete" href="{% url 'dashboard:page_delete' x.id %}" >
+              <button type="button" class="btn btn-primary">نعم أنا متأكد</button>
+              </a>
+              {% endfor %}
+              <button type="button" class="btn btn-default" data-dismiss="modal"> لا ترجوع للخلف</button>
+
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+  </section>
+    <!-- /.content -->
+</div>
+  {% endblock %}

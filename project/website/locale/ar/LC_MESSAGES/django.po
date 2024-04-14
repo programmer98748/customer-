@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-11 00:30+0300\n"
+"POT-Creation-Date: 2024-04-14 05:47+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,28 +18,96 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
+#: .\website\forms.py:10
+msgid "Full Name"
+msgstr "الاسم"
 
-#: .\website\templates\base.html:138 .\website\templates\base.html:260
+#: .\website\forms.py:18
+msgid "Email"
+msgstr "البريد الالكتروني"
+
+#: .\website\forms.py:23
+msgid "Mobile"
+msgstr "رقم الهاتف"
+
+#: .\website\forms.py:31
+msgid "Subject"
+msgstr "الموضوع"
+
+#: .\website\forms.py:32
+msgid "--- Select Subject ---"
+msgstr "اختار الموضوع"
+
+#: .\website\forms.py:37
+msgid "message"
+msgstr "الرسالة"
+
+#: .\website\templates\website\base.html:147
+#: .\website\templates\website\base.html:280
 msgid "Home"
-msgstr "الصفحه الرئيسية"
+msgstr "الصفحة الرئيسية"
 
-#: .\website\templates\base.html:142 .\website\templates\base.html:263
+#: .\website\templates\website\base.html:151
+#: .\website\templates\website\base.html:283
 msgid "About Us"
-msgstr "من نحن "
+msgstr "من نحن"
 
-#: .\website\templates\base.html:146 .\website\templates\base.html:266
-#: .\website\templates\base.html:333
+#: .\website\templates\website\base.html:155
+#: .\website\templates\website\base.html:286
+#: .\website\templates\website\includes\footer.html:50
+#: .\website\templates\website\index.html:120
 msgid "Our Services"
-msgstr "خدماتنا"
+msgstr "الخدمات"
 
-#: .\website\templates\base.html:151 .\website\templates\base.html:270
+#: .\website\templates\website\base.html:160
+#: .\website\templates\website\base.html:290
 msgid "Projects"
-msgstr "اعمالنا"
+msgstr "المشاريع"
 
-#: .\website\templates\base.html:154 .\website\templates\base.html:273
+#: .\website\templates\website\base.html:163
+#: .\website\templates\website\base.html:293
 msgid "Blogger"
-msgstr "المدونة"
+msgstr "المقالات"
 
-#: .\website\templates\base.html:346
+#: .\website\templates\website\base.html:176
+#: .\website\templates\website\base.html:180
+msgid "dashboard"
+msgstr "لوحة التحكم"
+
+#: .\website\templates\website\base.html:181
+msgid "logout"
+msgstr "تسجيل الخروج"
+
+#: .\website\templates\website\includes\footer.html:65
 msgid "Contact Info"
 msgstr "معلومات الاتصال"
+
+#: .\website\templates\website\index.html:6
+msgid "home"
+msgstr "الصفحة الرئيسية"
+
+#: .\website\templates\website\index.html:28
+msgid "We Create We Influence To Results"
+msgstr "نبدع فنؤثر فنحقق نتائج"
+
+#: .\website\templates\website\index.html:38
+msgid "Contact Us Now"
+msgstr "اتصل بنا الان"
+
+#: .\website\templates\website\index.html:98
+#: .\website\templates\website\index.html:349
+msgid "Contact Us"
+msgstr "اتصل بنا"
+
+#: .\website\templates\website\index.html:251
+msgid "Our Clients"
+msgstr "عملائنا"
+
+#: .\website\templates\website\index.html:364
+msgid "send"
+msgstr "ارسال"
+
+#: .\website\templates\website\project.html:5
+#: .\website\templates\website\project.html:16
+msgid "projects"
+msgstr "المشاريع"

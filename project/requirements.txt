@@ -1,5 +1,7 @@
 asgiref==3.7.2
+crispy-bootstrap5==2023.10
 Django==5.0.2
+django-crispy-forms==2.1
 django-js-asset==2.2.0
 pillow==10.2.0
 python-gettext==5.0

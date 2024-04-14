@@ -7,6 +7,15 @@ from django.template.defaultfilters import slugify
 from django.utils.translation import get_language
 from PIL import Image
 #from unidecode import unidecode
+from django.utils.text import slugify
+
+def arabic_slugify(str):
+    str = str.replace(" ", "-")
+    str = str.replace(",", "-")
+    str = str.replace("(", "-")
+    str = str.replace(")", "")
+    str = str.replace("?", "")
+    return str
 
 def upload_image(instance, image_name):
     """ Make a path to the post image and change the name of the image to a post id
@@ -40,7 +49,7 @@ class Post(models.Model):
     author = models.ForeignKey(User, on_delete=models.CASCADE, verbose_name=_('author'))
     title = models.CharField(_('title'), max_length=100)
     content = models.TextField(_('content'), max_length=4000)
-    image = models.ImageField(_('image'), upload_to=upload_image, blank=True, null=True)
+    image = models.ImageField(_('image'), upload_to=upload_image, blank=False, null=True)
     created_at = models.DateTimeField(_('created at'), auto_now=True)
     updated_at = models.DateTimeField(_('updated at'), auto_now_add=True)
     published_at = models.DateTimeField(_('published at'), default=now)
@@ -76,9 +85,7 @@ class Post(models.Model):
     def get_content(self):
         return self.get_self_or_post_lang.content
     
-    def get_categories(self):
-        return self.get_self_or_post_lang.categories
-    
+   
     def get_language_code(self):
         return self.get_self_or_post_lang.language.code
             
@@ -86,12 +93,14 @@ class Post(models.Model):
     
     def __str__(self):
         return self.title
-    
-    def save(self, *args, **kwargs):
-        """
-            Overwrite save mehtod to make a slug to post, rename a image and resize a big image
-        """
-
+ 
+   
+    def save(self,*args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+            if not self.slug:
+                self.slug = arabic_slugify(self.title)
+        super(Post, self).save(*args, **kwargs)
         # Make a post Slug
   #      if not self.pk:
  #           slug = slugify(unidecode(f"{self.title}"))

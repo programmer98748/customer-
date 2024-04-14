@@ -1,0 +1,114 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% load i18n %}
+{% block title %} {% trans 'comments list' %}{% endblock %}
+
+{% block body %}
+
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-md-12 ">
+            <div class=" " style="margin-top: 10px;" > 
+              <ol class="breadcrumb ">
+                <li class="breadcrumb-item"><a href="{% url 'dashboard:home' %}"><i class="nav-icon fas fa-home"></i>الصفحة الرئيسية</a></li>
+                  <li class="breadcrumb-item"><a href="">{% trans 'comments list' %}</a></li>
+              </ol>          
+              {% for message in messages %}
+              <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                  {{ message }}
+              </div>
+            {% endfor %}
+      <!-- Default box -->
+      <div class="card">
+        <div class="card-header p-2">
+          <ul class="nav nav-pills">
+            <li class="nav-item"><a class="nav-link active" href="#activity" data-toggle="tab">{% trans 'comments' %}</a></li>
+
+          </ul>
+        </div><!-- /.card-header -->
+        <div class="card-body">
+          <div class="tab-content">
+
+            <!-- /.tab-pane -->
+            <div class="active tab-pane" id="activity">
+              <!-- The timeline -->
+              <div class="timeline timeline-inverse">
+                <!-- timeline time label -->
+               
+                <!-- /.timeline-label -->
+                <!-- timeline item -->
+                {% for comment in comments %}
+
+                <div>
+                  <i class="fas fa-envelope bg-primary"></i>
+
+                  <div class="timeline-item">
+                    <span class="time"><i class="far fa-clock"></i> {{comment.created_at|date:'d M Y h:i'}}</span>
+
+                    <h3 class="timeline-header">{{comment.user_comment}} </h3>
+
+                    <div class="timeline-body">
+                      {{comment.content}}
+                    </div>
+                    <div class="timeline-footer">
+                      <a href="{% url 'dashboard:comment_delete' comment.id %}" class="btn btn-danger btn-sm">{% trans 'delete' %}</a>
+                    </div>
+                  </div>
+                </div>
+                {% endfor %}
+                
+
+                <!-- END timeline item -->
+                
+
+            
+            <!-- /.tab-pane -->
+          </div>
+          <!-- /.tab-content -->
+        </div><!-- /.card-body -->
+      </div>
+
+
+
+     
+          </div>
+        </div>
+      </div>
+      </div>
+            <!-- /.حذف -->
+      <div class="modal fade" id="modal-default">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">هل أنت متأكد؟</h4>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            {% for x in project %}
+            <div class="modal-body">
+              <p>أأنت متأكد أنك تريد حذف العنصر المحدد؟ جميع العناصر المرتبطة بها سيتم حذفها:&hellip;</p>
+            </div>
+            <div class="modal-footer justify-content-between">
+              <a class="delete" href="{% url 'dashboard:project_delete' x.id %}" >
+              <button type="button" class="btn btn-primary">نعم أنا متأكد</button>
+              </a>
+              {% endfor %}
+              <button type="button" class="btn btn-default" data-dismiss="modal"> لا ترجوع للخلف</button>
+            
+            </div>
+          </div>
+          <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+      </div>
+      <!-- /.card -->
+  </section>
+    <!-- /.content -->
+  </div>
+
+  
+{% endblock %}

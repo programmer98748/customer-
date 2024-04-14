@@ -1,0 +1,81 @@
+{% extends 'layouts/base.html' %}
+{% block title %}اضافة مسؤول اداري{% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+{% load i18n %}
+
+{% block body %}
+
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content" >
+        <div class="container-fluid " >
+            <div class="row">
+                <div class="col-12 mb-3">  
+                    <div id="content-wrapper">
+                        <div class=" " style="margin-top: 10px;" >
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                <a href="{% url 'dashboard:home' %}"><i class="nav-icon fas fa-home"></i> الصفحة الرئيسية </a></li>
+                                <li class="breadcrumb-item ">
+                                    <a href="{% url 'dashboard:accounts' %}"> المستخدمين</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    <a href="">اضافة </a>
+                                </li>
+                            </ol>
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <i class="fas fa-table text-warning"></i>
+                                        Details Of User
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12"> 
+                                            <form action="{% url 'dashboard:accounts_create'%}" method="post">
+                                                {% csrf_token %}
+                                                <div class="card-body">
+                                                    {% if form.errors %}
+                                                    <div class="error-message text-center alert alert-danger alert-dismissible" role="alert">
+                                                        <span class="">{{ form.username.errors }}</span>
+                                                        <span class="">{{ form.email.errors }}</span>
+                                                        <span class="">{{ form.password1.errors }}</span>
+                                                        <span class="">{{ form.password2.errors }}</span>
+                                                        <hr>
+                                                    </div>
+                                                    {% endif %}                                             
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <div class="form-group">
+                                                                {{ form|crispy }}
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <button type="submit" class="btn btn-primary btn-block">اضافة مستخدم</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+{% block javascript %}
+    <script type="text/javascript">
+        $("#id_username").attr("placeholder", "Enter Username");
+        $("#id_password").attr("placeholder", "Enter Password");
+    </script>
+{% endblock %}

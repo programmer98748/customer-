@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-04-10 07:14+0300\n"
+"POT-Creation-Date: 2024-04-14 04:44+0300\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -18,10 +18,175 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-#: .\project\settings.py:117
-msgid "English"
+
+#: .\post\models.py:32
+msgid "Active"
 msgstr ""
 
-#: .\project\settings.py:118
+#: .\post\models.py:33
+msgid "Inactive"
+msgstr ""
+
+#: .\post\models.py:37
+msgid "name"
+msgstr ""
+
+#: .\post\models.py:38
+msgid "code"
+msgstr ""
+
+#: .\post\models.py:39 .\post\models.py:53 .\post\models.py:149
+msgid "created at"
+msgstr ""
+
+#: .\post\models.py:40 .\post\models.py:54 .\post\models.py:150
+msgid "updated at"
+msgstr ""
+
+#: .\post\models.py:41 .\post\models.py:58 .\post\models.py:139
+#: .\post\models.py:151
+msgid "active"
+msgstr ""
+
+#: .\post\models.py:49
+msgid "author"
+msgstr ""
+
+#: .\post\models.py:50 .\post\models.py:136
+msgid "title"
+msgstr ""
+
+#: .\post\models.py:51 .\post\models.py:137 .\post\models.py:147
+msgid "content"
+msgstr "المحتوي"
+
+#: .\post\models.py:52
+#, fuzzy
+#| msgid "images"
+msgid "image"
+msgstr "البوم الصور"
+
+#: .\post\models.py:55
+msgid "published at"
+msgstr ""
+
+#: .\post\models.py:56
+#, fuzzy
+#| msgid "views"
+msgid "views count"
+msgstr "عرض الموقع"
+
+#: .\post\models.py:57 .\post\models.py:138
+msgid "language"
+msgstr "اللغات"
+
+#: .\post\models.py:135 .\post\models.py:148
+msgid "post"
+msgstr "المقالات"
+
+#: .\post\templates\blog\blog.html:16
+msgid "Blogs"
+msgstr "المقالات"
+
+#: .\post\templates\blog\blog_single.html:94
+#: .\templates\includes\sidenav.html:132
+msgid "comments"
+msgstr "التعليقات"
+
+#: .\project\settings.py:160
+msgid "English"
+msgstr "En"
+
+#: .\project\settings.py:161
 msgid "Arabic"
+msgstr "Ar"
+
+#: .\templates\includes\navigation.html:19
+#: .\templates\includes\navigation.html:47
+#, fuzzy
+#| msgid "views"
+msgid "views"
+msgstr "عرض الموقع"
+
+#: .\templates\includes\navigation.html:43
+msgid "settings"
+msgstr "الاعدادات"
+
+#: .\templates\includes\navigation.html:52
+msgid "profile"
+msgstr "الملف الشخصي"
+
+#: .\templates\includes\navigation.html:57
+msgid "change password"
+msgstr "تغير كلمة السر"
+
+#: .\templates\includes\navigation.html:63
+#: .\templates\includes\sidenav.html:140
+msgid "logout"
+msgstr "تسجيل الخروج"
+
+#: .\templates\includes\sidenav.html:20
+msgid "dashboard"
+msgstr "الصفحة الرئسية"
+
+#: .\templates\includes\sidenav.html:26
+msgid "site settings"
+msgstr " بيانات الموقع "
+
+#: .\templates\includes\sidenav.html:34
+msgid "tags"
+msgstr "الاقسام"
+
+#: .\templates\includes\sidenav.html:41
+msgid "services"
+msgstr "الخدمات"
+
+#: .\templates\includes\sidenav.html:47
+msgid "trans brands"
+msgstr ""
+
+#: .\templates\includes\sidenav.html:58 .\templates\includes\sidenav.html:65
+msgid "articles"
+msgstr "المقالات"
+
+#: .\templates\includes\sidenav.html:71
+msgid "translation articles"
+msgstr "ترجمة المقالات"
+
+#: .\templates\includes\sidenav.html:81
+msgid "brands"
+msgstr "عملائنا"
+
+#: .\templates\includes\sidenav.html:87
+msgid "users"
+msgstr "المسخدمين"
+
+#: .\templates\includes\sidenav.html:96
+msgid "images"
+msgstr "البوم الصور"
+
+#: .\templates\includes\sidenav.html:105
+msgid "pages"
+msgstr "الصفحات "
+
+#: .\templates\includes\sidenav.html:117
+msgid "home"
+msgstr "الصفحة الرئسية"
+
+#: .\templates\includes\sidenav.html:123
+msgid "about"
+msgstr "من نحنوا"
+
+#: .\templates\users\login.html:13
+msgid "login"
+msgstr "تسجيل الدخول"
+
+#: .\templates\users\password_reset.html:4
+msgid "Password Reset"
+msgstr ""
+
+#: .\templates\users\password_reset.html:53
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll send you "
+"an e-mail allowing you to reset it."
 msgstr ""

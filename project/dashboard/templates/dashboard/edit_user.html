@@ -1,0 +1,71 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block title %}  تعديل {{ object.username }}{% endblock %}
+{% load i18n %}
+
+{% block body %}
+<div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content" >
+        <div class="container-fluid " >
+            <div class="row">
+                <div class="col-12 mb-3">
+                    <div id="content-wrapper">
+                        <div class=" " style="margin-top: 10px;" >
+                            <ol class="breadcrumb">
+                                <li class="breadcrumb-item">
+                                <a href="{% url 'dashboard:home' %}"><i class="nav-icon fas fa-home"></i>الصفحة الرئيسية</a></li>
+                                <li class="breadcrumb-item ">
+                                <a href="{% url 'dashboard:accounts' %}">المستخدمين</a>
+                                </li>
+                                <li class="breadcrumb-item active">
+                                    <a href="">{{ object.username }}</a>
+                                </li>
+                            </ol>
+                            {% for message in messages %}
+                            <div class="alert alert-{{ message.tags }} alert-dismissible" role="alert">
+                                {{ message }}
+                            </div>
+                            {% endfor %}
+                            <div class="card mb-3">
+                                <div class="card-header">
+                                    <i class="fas fa-table"></i>
+                                    List Of Users
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-12"> 
+                                            <form class="form-horizontal" action="" method="POST">
+                                                {% csrf_token %}
+                                                <div class="form-group">
+                                                    <div class="form-row">
+                                                        <div class="col-md-6">
+                                                            {% for field in form %}
+                                                            <div class="form-label-group">
+                                                                    {{ field.label_tag }}
+                                                                    {{ field }}                                    
+                                                            </div>
+                                                            {% endfor %}
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-primary btn-block" type="submit">Submit &nbsp;&nbsp;&nbsp;<span></span></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock %}
+{% block javascript %}
+    <script type="text/javascript">
+        $("#id_username").attr("placeholder", "Enter Username");
+        $("#id_password").attr("placeholder", "Enter Password");
+    </script>
+{% endblock %}

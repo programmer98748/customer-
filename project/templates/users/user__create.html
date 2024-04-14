@@ -1,0 +1,91 @@
+{% extends 'layouts/base.html' %}
+{% block title %}Register Page{% endblock %}
+{% load crispy_forms_tags %}
+{% load static %}
+
+{% block body %}
+  <!-- Content Wrapper. Contains page content -->
+  <div class="content-wrapper">
+    <!-- Content Header (Page header) -->
+    <section class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+        
+          <div class="col-sm-6">
+            <ol class="breadcrumb ">
+              <li class="breadcrumb-item"><a href="{% url 'home:home' %}"><i class="nav-icon fas fa-home"></i> الصفحة الرئيسية </a></li>
+              <li class="breadcrumb-item active"><a href="{% url 'home:aluser' %}"> المستخدمين</a></li>
+            </ol>
+          </div>
+        </div>
+      </div><!-- /.container-fluid -->
+    </section>
+
+    <!-- Main content -->
+    <section class="content">
+      <div class="container-fluid">
+        <div class="row">
+         
+        <div class="col-md-12">
+          <div class="card ">
+            <div class="card-header">
+              <h3 class="card-title"></h3>
+
+              <div class="card-tools">
+                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                  <i class="fas fa-minus"></i>
+                </button>
+              </div>
+            </div>
+        
+          
+          
+
+
+                <form action="{% url 'home:create_user_form'%}" method="post">
+                    {% csrf_token %}
+                    <div class="card-body">
+                      {% if form.errors %}
+                      <div class="error-message text-center alert alert-danger alert-dismissible" role="alert">
+                        <span class="">{{ form.username.errors }}</span>
+                        <span class="">{{ form.email.errors }}</span>
+                        <span class="">{{ form.password1.errors }}</span>
+                        <span class="">{{ form.password2.errors }}</span>
+                        <hr>
+                      </div>
+                      
+                    {% endif %} 
+                    
+                    <div class="row">
+                      
+                      <div class="col-md-12">
+                            <div class="form-group">
+                               
+                                {{ form|crispy }}
+                            </div>
+                        </div>
+                        
+                        <div class="col-12">
+                          <button type="submit" class="btn btn-primary btn-block">Create account</button>
+                           
+                        </div>
+                    </div>
+                    
+                  </div>
+                </form>
+            </div>
+            
+        
+                   
+                  
+                 
+           
+        
+
+          
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </section>
+  </div> 
+{% endblock %}

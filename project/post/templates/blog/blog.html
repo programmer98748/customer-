@@ -1,6 +1,7 @@
-{% extends 'base.html' %}
+{% extends 'website/base.html' %}
 {% load static %}
 {% block title %}المقالات |{% endblock %}
+{% load i18n %}
 
 {% block bodyweb %}   
 
@@ -12,7 +13,7 @@
         <div class="mt-bnr-inr-entry">
             <div class="banner-title-outer">
                 <div class="banner-title-">
-                    <h1 class="m-b0"> المقالات</h1>
+                    <h2 class="m-b0">{% translate 'Blogs' %} </h2>
                 </div>
             </div>
             <!-- BREADCRUMB ROW -->
@@ -33,68 +34,18 @@
       <!-- IMAGE CAROUSEL START -->
       <div class="section-content">
           <div class="row d-flex justify-content-center">
-              <div class="col-lg-4 col-md-6">
-                  <div class="mt-box blog-post latest-blog-3 date-style-1 m-b30">
-                      <div class="mt-post-media mt-img-overlay7">
-                          <a href="javascript:;"><img src="{% static 'assets/images/home-bg1.jpg' %}" alt=""></a>
-                      </div>
-                      <div class="mt-post-info p-a30 bg-gray">
-                          <div class="post-overlay-position">
-                              <div class="mt-post-meta ">
-                                  <ul>
-                                    <li class="post-date">2002</span></li>
-                                    <li class="post-author">بواسطة <a href="javascript:;"> </a> </li>
-                                      <li class="post-comment"><a href="javascript:;">2 تعليق</a> </li>
-                                  </ul>
-                              </div>                                        
-                              <div class="mt-post-title ">
-                                  <h4 class="post-title m-b0">التصميم التجاري للمشروع
-                                </h4>
-                              </div>
-                              <div class="mt-post-text">
-                                  <p>كل السرور هو الترحيب بكل آلام يتم تجنبها. في ظروف معينة الالتزامات. </p> 
-                              </div>
-                              <div class="readmore-line">
-                                  <span><a href="" class="site-button-link" data-hover="اقرأ أكثر">اقرأ أكثر <i class="fa fa-angle-right arrow-animation"></i></a></span>
-                              </div>
-                          </div>
-                      </div>
-                  </div>
-              </div>
-              <div class="col-lg-4 col-md-6">
-                <div class="mt-box blog-post latest-blog-3 date-style-1 m-b30">
-                    <div class="mt-post-media mt-img-overlay7">
-                        <a href="javascript:;"><img src="{% static 'assets/images/home-bg1.jpg' %}" alt=""></a>
-                    </div>
-                    <div class="mt-post-info p-a30 bg-gray">
-                        <div class="post-overlay-position">
-                            <div class="mt-post-meta ">
-                                <ul>
-                                  <li class="post-date">2002</span></li>
-                                  <li class="post-author">بواسطة <a href="javascript:;"> </a> </li>
-                                    <li class="post-comment"><a href="javascript:;">2 تعليق</a> </li>
-                                </ul>
-                            </div>                                        
-                            <div class="mt-post-title ">
-                                <h4 class="post-title m-b0">التصميم التجاري للمشروع
-                              </h4>
-                            </div>
-                            <div class="mt-post-text">
-                                <p>كل السرور هو الترحيب بكل آلام يتم تجنبها. في ظروف معينة الالتزامات. </p> 
-                            </div>
-                            <div class="readmore-line">
-                                <span><a href="" class="site-button-link" data-hover="اقرأ أكثر">اقرأ أكثر <i class="fa fa-angle-right arrow-animation"></i></a></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            
+            
+              
             {% for post in posts %}
 
             <div class="col-lg-4 col-md-6">
                 <div class="mt-box blog-post latest-blog-3 date-style-1 m-b30">
                     <div class="mt-post-media mt-img-overlay7">
-                        <a href="{% url 'post:blog_single' post.slug %}"><img src="{{ post.image.url }}" alt=""></a>
+                            
+                            {% if post.image %}
+            	<img src="{{ post.image.url }}" alt="Image Post">
+                            {% endif %}
                     </div>
                     <div class="mt-post-info p-a30 bg-gray">
                         <div class="post-overlay-position">
